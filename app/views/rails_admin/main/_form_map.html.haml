@@ -1,8 +1,12 @@
-= javascript_include_tag ("http://maps.googleapis.com/maps/api/js?key=#{field.google_api_key}&sensor=false")
 
 = javascript_tag do
   :plain
     jQuery(function(){
+  var script = document.createElement( 'script' );
+script.type = 'text/javascript';
+script.src = "http://maps.googleapis.com/maps/api/js?key=#{field.google_api_key}&sensor=false";
+$("head").append( script );
+
       var marker = null;
       var latlng = new google.maps.LatLng(#{form.object.send(field.name) || field.default_latitude}, #{form.object.send(field.longitude_field) || field.default_longitude});
 
